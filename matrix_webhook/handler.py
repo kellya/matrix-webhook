@@ -4,6 +4,7 @@ import json
 import logging
 from http import HTTPStatus
 from hmac import HMAC
+import plugins
 
 from markdown import markdown
 
@@ -18,6 +19,7 @@ async def matrix_webhook(request):
 
     This one handles a POST, checks its content, and forwards it to the matrix room.
     """
+    formatters = plugins.names_factory(__package__)
     LOGGER.debug(f"Handling {request=}")
     data_b = await request.read()
 
