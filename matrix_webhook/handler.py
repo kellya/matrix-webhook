@@ -43,7 +43,7 @@ async def matrix_webhook(request):
             format = request.rel_url.query["formatter"]
             plugin = importlib.import_module(f"matrix_webhook.formatters.{format}", "formatter")
             data = plugin.formatter(data, request.headers)
-        except AttributeError:
+        except ModuleNotFoundError:
             return utils.create_json_response(
                 HTTPStatus.BAD_REQUEST, "Unknown formatter"
             )
