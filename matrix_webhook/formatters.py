@@ -60,7 +60,7 @@ def pingdom(data, headers):
     elif data["check_type"].lower() == "dns":
         # There are a bunch of values that are blanke when you do a test
         # so ignore them if value is unset
-        try
+        try:
             first_ip = data["first_probe"]["ip"]
         except KeyError:
             first_ip = "unknown"
