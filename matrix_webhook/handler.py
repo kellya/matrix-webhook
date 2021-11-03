@@ -4,11 +4,11 @@ import json
 import logging
 from http import HTTPStatus
 from hmac import HMAC
-import plugins
+import importlib
 
 from markdown import markdown
 
-from . import conf, formatters, utils
+from . import conf, utils
 
 LOGGER = logging.getLogger("matrix_webhook.handler")
 
@@ -19,7 +19,6 @@ async def matrix_webhook(request):
 
     This one handles a POST, checks its content, and forwards it to the matrix room.
     """
-    formatters = plugins.names_factory(__package__)
     LOGGER.debug(f"Handling {request=}")
     data_b = await request.read()
 
@@ -38,9 +37,12 @@ async def matrix_webhook(request):
 
     if "formatter" in request.rel_url.query:
         try:
-            data = getattr(formatters, request.rel_url.query["formatter"])(
-                data, request.headers
-            )
+#            data = getattr(formatters, request.rel_url.query["formatter"])(
+#                data, request.headers
+#            )
+            format = request.rel_url.query["formatter"]
+            plugin = importlib.import_module(f"matrix_webhook.formatters.{format}", "formatter")
+            data = plugin.formatter(data, request.headers)
         except AttributeError:
             return utils.create_json_response(
                 HTTPStatus.BAD_REQUEST, "Unknown formatter"

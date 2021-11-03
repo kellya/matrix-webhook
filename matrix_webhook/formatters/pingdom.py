@@ -1,8 +1,7 @@
-import plugins
+from datetime import datetime
 
 
-@plugin.register
-def pingdom(data, headers):
+def formatter(data, headers):
     """Pretty-print a pingdom notification."""
     #JSON data formatting was obtained from https://www.pingdom.com/resources/webhooks/
     check_id = data["check_id"]

@@ -1,8 +1,4 @@
-import plugins
-
-
-@plugins.register
-def github(data, headers):
+def formatter(data, headers):
     """Pretty-print a github notification."""
     # TODO: Write nice useful formatters. This is only an example.
     if headers["X-GitHub-Event"] == "push":

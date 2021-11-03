@@ -1,8 +1,4 @@
-import plugins
-
-
-@plugins.register
-def grafana(data, headers):
+def formatter(data, headers):
     """Pretty-print a grafana notification."""
     text = ""
     if "title" in data:
