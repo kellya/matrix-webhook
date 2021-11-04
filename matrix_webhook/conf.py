@@ -45,10 +45,10 @@ parser.add_argument(
 )
 parser.add_argument(
     "-k",
-    "--api-key",
-    help="shared secret to use this service. Required. Environment variable: `API_KEY`",
+    "--api-keys",
+    help="comma separated list of shared secrets to use this service. Required. Environment variable: `API_KEYS`",
     **(
-        {"default": os.environ["API_KEY"]}
+        {"default": os.environ["API_KEYS"]}
         if "API_KEY" in os.environ
         else {"required": True}
     ),
@@ -63,5 +63,5 @@ SERVER_ADDRESS = (args.host, args.port)
 MATRIX_URL = args.matrix_url
 MATRIX_ID = args.matrix_id
 MATRIX_PW = args.matrix_pw
-API_KEY = args.api_key
+API_KEYS = args.api_keys.split(",")
 VERBOSE = args.verbose

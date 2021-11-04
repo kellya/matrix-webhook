@@ -69,7 +69,7 @@ async def matrix_webhook(request):
             HTTPStatus.BAD_REQUEST, f"Missing {', '.join(missing)}"
         )
 
-    if data["key"] != conf.API_KEY:
+    if data["key"] not in conf.API_KEYS:
         return utils.create_json_response(HTTPStatus.UNAUTHORIZED, "Invalid API key")
 
     if "formatted_body" in data:
