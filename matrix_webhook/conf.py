@@ -49,7 +49,7 @@ parser.add_argument(
     help="comma separated list of shared secrets to use this service. Required. Environment variable: `API_KEYS`",
     **(
         {"default": os.environ["API_KEYS"]}
-        if "API_KEY" in os.environ
+        if "API_KEYS" in os.environ
         else {"required": True}
     ),
 )
