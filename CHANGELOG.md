@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - join room before sending message
   in [#12](https://github.com/nim65s/matrix-webhook/pull/12)
   by [@bboehmke](https://github.com/bboehmke)
+- Changed --api-key and envvar API_KEY to --api-keys and API_KEYS respectively
+- Changed handling of api key to use a list instead of single value
+    can be used
+- Changed the formatters to a more plugin-based approach where each formatter is
+    its own <formattername>.py file in formatters directory
+- Added pingdom formatter (currently handling http, dns, and tcp probe types)
 
 ## [v3.2.1] - 2021-08-28
 
