@@ -3,7 +3,7 @@ from datetime import datetime
 
 def formatter(data, headers):
     """Pretty-print a pingdom notification."""
-    #JSON data formatting was obtained from https://www.pingdom.com/resources/webhooks/
+    # JSON data formatting was obtained from https://www.pingdom.com/resources/webhooks/
     check_id = data["check_id"]
     check_name = data["check_name"]
     current_state = data["current_state"]
@@ -37,12 +37,12 @@ def formatter(data, headers):
         except KeyError:
             second_ip = "unknown"
         try:
-            first_location  = data["first_probe"]["location"]
-        except:
+            first_location = data["first_probe"]["location"]
+        except KeyError:
             first_location = "unknown"
         try:
             second_location = data["second_probe"]["location"]
-        except:
+        except KeyError:
             second_location = "unknown"
         try:
             expected_ip = data["check_params"]["expected_ip"]

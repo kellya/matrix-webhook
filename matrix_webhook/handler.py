@@ -37,9 +37,6 @@ async def matrix_webhook(request):
 
     if "formatter" in request.rel_url.query:
         try:
-#            data = getattr(formatters, request.rel_url.query["formatter"])(
-#                data, request.headers
-#            )
             format = request.rel_url.query["formatter"]
             plugin = importlib.import_module(f"matrix_webhook.formatters.{format}", "formatter")
             data = plugin.formatter(data, request.headers)
