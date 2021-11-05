@@ -1,0 +1,21 @@
+hostname: localhost
+port: 4785
+# matrix-specific settings
+matrix:
+  # URL of homeserver to connect
+  url: https://matrix.org
+  # user to connect to homserver as
+  id: username
+  # password for the user
+  pw: password
+# keys to allow  These should be random strings
+# these could be generated with something like `openssl rand -hex 24`
+# change these, you only need
+api:
+  keys:
+    # change these keys.  
+    - d6a26923e41492d89cffd9e5b6d9838a89e71ffa061edb5d # Can add a comment for what the key is used
+    - 149d866b2591ceee2b254ca8b16c08fd27a7e2eed7ff01e0
+# location of logfile
+log:
+  level: debug
