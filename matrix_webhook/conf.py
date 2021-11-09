@@ -72,17 +72,16 @@ args = parser.parse_args()
 if args.config:
     with open(args.config) as f:
         config = yaml.safe_load(f)
-    SERVER_ADDRESS = (config["hostname"], config["port"])
+    SERVER_ADDRESS = (config["host"], config["port"])
     MATRIX_URL = config["matrix"]["url"]
     MATRIX_ID = config["matrix"]["id"]
     MATRIX_PW = config["matrix"]["pw"]
-    API_KEYS = config["api_keys"]
-    LOG_FILE = config["log"]
+    API_KEYS = config["api_keys"].keys()
+    ROOM_KEYS = config["api_keys"]
     VERBOSE = get_numeric_log_level(config["log"]["level"])
 else:
     SERVER_ADDRESS = (args.host, args.port)
     MATRIX_URL = args.matrix_url
-    LOG_FILE = args.log
     if not args.matrix_id:
         print("Missing matrix user-id. Use -i or --matrix-id or specify in config.yaml")
         sys.exit(1)

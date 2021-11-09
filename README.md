@@ -30,23 +30,32 @@ docker run --rm -it nim65s/matrix-webhook -h
 ```
 
 ```
-usage: python -m matrix_webhook [-h] [-H HOST] [-P PORT] [-u MATRIX_URL] -i MATRIX_ID -p MATRIX_PW -k API_KEY [-v]
+usage: python -m matrix_webhook [-h] [-H HOST] [-P PORT] [-u MATRIX_URL]
+                                [-i MATRIX_ID] [-p MATRIX_PW] [-k API_KEYS]
+                                [-c CONFIG] [-v]
 
 Configuration for Matrix Webhook.
 
-
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  -H HOST, --host HOST  host to listen to. Default: `''`. Environment variable: `HOST`
-  -P PORT, --port PORT  port to listed to. Default: 4785. Environment variable: `PORT`
+  -H HOST, --host HOST  host to listen to. Default: `''`. Environment
+                        variable: `HOST`
+  -P PORT, --port PORT  port to listed to. Default: 4785. Environment
+                        variable: `PORT`
   -u MATRIX_URL, --matrix-url MATRIX_URL
-                        matrix homeserver url. Default: `https://matrix.org`. Environment variable: `MATRIX_URL`
+                        matrix homeserver url. Default: `https://matrix.org`.
+                        Environment variable: `MATRIX_URL`
   -i MATRIX_ID, --matrix-id MATRIX_ID
-                        matrix user-id. Required. Environment variable: `MATRIX_ID`
+                        matrix user-id. Required. Environment variable:
+                        `MATRIX_ID`
   -p MATRIX_PW, --matrix-pw MATRIX_PW
-                        matrix password. Required. Environment variable: `MATRIX_PW`
-  -k API_KEY, --api-key API_KEY
-                        shared secret to use this service. Required. Environment variable: `API_KEY`
+                        matrix password. Required. Environment variable:
+                        `MATRIX_PW`
+  -k API_KEYS, --api-keys API_KEYS
+                        comma separated list of shared secrets to use this
+                        service. Required. Environment variable: `API_KEYS`
+  -c CONFIG, --config CONFIG
+                        configuration file. Default: `config.yaml`
   -v, --verbose         increment verbosity level
 ```
 
@@ -86,7 +95,11 @@ Add a JSON webhook with `?formatter=github`, and put the `API_KEY` as secret
 
 ### For Grafana
 
-Add a webhook with an URL ending with `?formatter=grafana&key=API_KEY`
+Add a webhook with a URL ending with `?formatter=grafana&key=API_KEY`
+
+### For Pingdom
+
+Add a webhook with a URL ending with `?formatter=pingdom&key=API_KEY`
 
 ## Test room
 
