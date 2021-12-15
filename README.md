@@ -101,6 +101,19 @@ Add a webhook with a URL ending with `?formatter=grafana&key=API_KEY`
 
 Add a webhook with a URL ending with `?formatter=pingdom&key=API_KEY`
 
+### For Buildgot
+
+Add a webhook with a URL ending with `?formatter=buildbot&key=API_KEY`
+
+### Generic formatter For anything that doesn't match specifically
+
+This is most useful when developing a plugin.  It will simply return the raw
+json of whatever was sent.  You *could* use this as a formatter, but it would
+look pretty ugly.
+
+Add a webhook with a URL ending with `?formatter=generic&key=API_KEY`
+
+
 ## Test room
 
 [#matrix-webhook:tetaneutral.net](https://matrix.to/#/!DPrUlnwOhBEfYwsDLh:matrix.org)
