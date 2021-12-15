@@ -93,13 +93,13 @@ curl -d '{"body":"new contrib from toto: [44](http://radio.localhost/map/#44)", 
 
 These formatters will output custom messages depending on the specific formatter.  Generally to set these up, on the remote provider you would create a webhook with `https://your.webhook.domain/?formatter=<formatter columun below>&api_key=<your apikey>`
 
-| formatter | description | key location |
-| - | - | - |
-| github | for github.com | in github JSON webhook settings as `secret` |
-| grafana | for grafana | in URL with api_key=<yourkey> |
-| pingdom | for pingdom.com | in webhook URL with api_key=<yourkey> |
-| buildbot | buildbot reporter | in webhook URL with api_key=<yourkey> or in master.cfg credentials header as `api_key` |
-| generic | returns raw JSON that was recieved.  For developing additional formatter plugins | in URL with api_key=<yourkey> |
+| formatter | description                                                                      | key location                                                                             |
+| --        | -                                                                                | -                                                                                        |
+| github    | for github.com                                                                   | in github JSON webhook settings as `secret`                                              |
+| grafana   | for grafana                                                                      | in webhook URL with `api_key=<yourkey>`                                                  |
+| pingdom   | for pingdom.com                                                                  | in webhook URL with `api_key=<yourkey>`                                                  |
+| buildbot  | buildbot reporter                                                                | in webhook URL with `api_key=<yourkey>` or in master.cfg credentials header as `api_key` |
+| generic   | returns raw JSON that was recieved.  For developing additional formatter plugins | in URL with api_key=<yourkey>                                                            |
   
 For example, if your matrix-webhook was hosted at https://webhooks.example.com, and you were setting up pingdom and you have an api_key of "123", you would use the following URL for your webhook call from pingdom:
 `https://webhooks.example.com/?formatter=pingdom&api_key=123`
