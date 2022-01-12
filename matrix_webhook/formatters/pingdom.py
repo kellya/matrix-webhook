@@ -8,17 +8,20 @@ def formatter(data, headers):
     check_id = data["check_id"]
     check_name = data["check_name"]
     current_state = data["current_state"]
+    tags = data["tags"]
     local_time = datetime.fromtimestamp(data["state_changed_timestamp"])
 
     if data["check_type"].lower() == "http":
         # http https or http_custom check types
         try:
             check_url = data["check_params"]["full_url"]
-            data["body"] = (
-                f"###{check_name} is {current_state}\n\n{check_url}"
-                f" marked {current_state} at {local_time} ⚬ "
-                f"[view details](https://my.pingdom.com/reports/responsetime#check={check_id})"
-            )
+            message = ""
+            message += f"###{check_name} is {current_state}\n\n{check_url}"
+            message += f" marked {current_state} at {local_time} ⚬ "
+            message += f"[view details](https://my.pingdom.com/reports/responsetime#check={check_id})"
+            if tags:
+                message += f"\n\nTags: {tags}"
+            data["body"] = message
         except Exception as error:
             data["body"] = (
                 f"Error: An attempt to post from pingdom was malformed "
