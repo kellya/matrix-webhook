@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.4.0
     hooks:
     -   id: check-added-large-files
     -   id: check-ast
@@ -14,7 +14,7 @@ repos:
     -   id: mixed-line-ending
     -   id: trailing-whitespace
 -   repo: https://github.com/psf/black
-    rev: 21.12b0
+    rev: 22.10.0
     hooks:
     -   id: black
         language_version: python3
@@ -25,6 +25,12 @@ repos:
         args:
         - --ignore=D200,D203,D212
 -   repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 6.0.0
     hooks:
     -   id: flake8
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v3.2.2
+    hooks:
+    -   id: pyupgrade
+        args:
+        -   --py38-plus

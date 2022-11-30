@@ -6,6 +6,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.5.0] - 2022-09-07
+
+- Add formatter for grafana 9
+  in [#45](https://github.com/nim65s/matrix-webhook/pull/45)
+  by [@svenseeberg](https://github.com/svenseeberg)
+
+## [v3.4.0] - 2022-08-12
+
+- fix tests
+- add `matrix-webhook` script
+  in [#25](https://github.com/nim65s/matrix-webhook/pull/25)
+  and [#35](https://github.com/nim65s/matrix-webhook/pull/35)
+  by [@a7p](https://github.com/a7p)
+- publish linux/arm64 image
+  in [#37](https://github.com/nim65s/matrix-webhook/pull/35)
+  by [@kusold](https://github.com/kusold)
+- update badges
+- setup dependabot
+- misc upgrades from poetry update, pre-commit.ci, and dependabot
+
+## [v3.3.0] - 2022-03-04
+
+- add pyupgrade
+- add gitlab formatter for google chat & microsoft teams
+  in [#21](https://github.com/nim65s/matrix-webhook/pull/21)
+  by [@GhislainC](https://github.com/GhislainC)
 - join room before sending message
   in [#12](https://github.com/nim65s/matrix-webhook/pull/12)
   by [@bboehmke](https://github.com/bboehmke)
@@ -64,7 +90,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v1.0.0] - 2020-02-14
 - First release with matrix-client & http.server
 
-[Unreleased]: https://github.com/nim65s/matrix-webhook/compare/v3.2.1...master
+[Unreleased]: https://github.com/nim65s/matrix-webhook/compare/v3.5.0...master
+[v3.5.0]: https://github.com/nim65s/matrix-webhook/compare/v3.4.0...v3.5.0
+[v3.4.0]: https://github.com/nim65s/matrix-webhook/compare/v3.3.0...v3.4.0
+[v3.3.0]: https://github.com/nim65s/matrix-webhook/compare/v3.2.1...v3.3.0
 [v3.2.1]: https://github.com/nim65s/matrix-webhook/compare/v3.2.0...v3.2.1
 [v3.2.0]: https://github.com/nim65s/matrix-webhook/compare/v3.1.1...v3.2.0
 [v3.1.1]: https://github.com/nim65s/matrix-webhook/compare/v3.1.0...v3.1.1

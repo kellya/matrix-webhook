@@ -4,9 +4,11 @@
 [![Lints](https://github.com/nim65s/matrix-webhook/actions/workflows/lint.yml/badge.svg)](https://github.com/nim65s/matrix-webhook/actions/workflows/lint.yml)
 [![Docker-Hub](https://github.com/nim65s/matrix-webhook/actions/workflows/docker-hub.yml/badge.svg)](https://hub.docker.com/r/nim65s/matrix-webhook)
 [![Release](https://github.com/nim65s/matrix-webhook/actions/workflows/release.yml/badge.svg)](https://pypi.org/project/matrix-webhook/)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/nim65s/matrix-webhook/master.svg)](https://results.pre-commit.ci/latest/github/nim65s/matrix-webhook/main)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/nim65s/matrix-webhook/branch/master/graph/badge.svg?token=BLGISGCYKG)](https://codecov.io/gh/nim65s/matrix-webhook)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a0783da8c0461fe95eaf/maintainability)](https://codeclimate.com/github/nim65s/matrix-webhook/maintainability)
 [![PyPI version](https://badge.fury.io/py/matrix-webhook.svg)](https://badge.fury.io/py/matrix-webhook)
 
 Post a message to a matrix room with a simple HTTP POST
@@ -21,9 +23,12 @@ docker pull nim65s/matrix-webhook
 
 ## Start
 
-Create a matrix user for the bot, and launch this app it with the following arguments or environment variables:
+Create a matrix user for the bot, and launch this app with the following arguments and/or environment variables
+(environment variables update defaults, arguments take precedence):
 
 ```
+matrix-webhook -h
+# OR
 python -m matrix_webhook -h
 # OR
 docker run --rm -it nim65s/matrix-webhook -h
@@ -103,6 +108,19 @@ These formatters will output custom messages depending on the specific formatter
   
 For example, if your matrix-webhook was hosted at https://webhooks.example.com, and you were setting up pingdom and you have an api_key of "123", you would use the following URL for your webhook call from pingdom:
 `https://webhooks.example.com/?formatter=pingdom&api_key=123`
+
+### For Gitlab
+
+At a group level, Gitlab does not permit to setup webhooks. A workaround consists to use Google
+Chat or Microsoft Teams notification integration with a custom URL (Gitlab does not check if the url begins with the normal url of the service).
+
+#### Google Chat
+
+Add a Google Chat integration with an URL ending with `?formatter=gitlab_gchat&key=API_KEY`
+
+#### Microsoft Teams
+
+Add a Microsoft Teams integration with an URL ending with `?formatter=gitlab_teams&key=API_KEY`
 
 ## Test room
 
