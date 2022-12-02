@@ -37,22 +37,14 @@ async def matrix_webhook(request):
 
     if "formatter" in request.rel_url.query:
         try:
-            format_type = request.rel_url.query["formatter"]
-            plugin = importlib.import_module(
-                f"matrix_webhook.formatters.{format_type}", "formatter"
-            )
+            format = request.rel_url.query["formatter"]
+            plugin = importlib.import_module(f"matrix_webhook.formatters.{format}", "formatter")
             data = plugin.formatter(data, request.headers)
         except ModuleNotFoundError:
             return utils.create_json_response(
                 HTTPStatus.BAD_REQUEST, "Unknown formatter"
             )
 
-    if (
-        "room_id" not in request.rel_url.query
-        and "room_id" not in data
-        and conf.ROOM_KEYS[f'{data["key"]}']
-    ):
-        data["room_id"] = conf.ROOM_KEYS[f'{data["key"]}']
     if "room_id" in request.rel_url.query and "room_id" not in data:
         data["room_id"] = request.rel_url.query["room_id"]
     if "room_id" not in data:
@@ -96,5 +88,4 @@ async def matrix_webhook(request):
         "format": "org.matrix.custom.html",
         "formatted_body": formatted_body,
     }
-    print(conf.ROOM_KEYS)
     return await utils.send_room_message(data["room_id"], content)
