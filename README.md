@@ -1,25 +1,14 @@
 # Matrix Webhook
 
-[![Tests](https://github.com/nim65s/matrix-webhook/actions/workflows/test.yml/badge.svg)](https://github.com/nim65s/matrix-webhook/actions/workflows/test.yml)
-[![Lints](https://github.com/nim65s/matrix-webhook/actions/workflows/lint.yml/badge.svg)](https://github.com/nim65s/matrix-webhook/actions/workflows/lint.yml)
-[![Docker-Hub](https://github.com/nim65s/matrix-webhook/actions/workflows/docker-hub.yml/badge.svg)](https://hub.docker.com/r/nim65s/matrix-webhook)
-[![Release](https://github.com/nim65s/matrix-webhook/actions/workflows/release.yml/badge.svg)](https://pypi.org/project/matrix-webhook/)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/nim65s/matrix-webhook/master.svg)](https://results.pre-commit.ci/latest/github/nim65s/matrix-webhook/main)
-
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![codecov](https://codecov.io/gh/nim65s/matrix-webhook/branch/master/graph/badge.svg?token=BLGISGCYKG)](https://codecov.io/gh/nim65s/matrix-webhook)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a0783da8c0461fe95eaf/maintainability)](https://codeclimate.com/github/nim65s/matrix-webhook/maintainability)
-[![PyPI version](https://badge.fury.io/py/matrix-webhook.svg)](https://badge.fury.io/py/matrix-webhook)
-
 Post a message to a matrix room with a simple HTTP POST
+
+This is my own fork of https://github.com/nim65s/matrix-webhook
+It adds a yaml configuration with multi-api key endpoints and moves the filtes
+to more of a plugin-based system
 
 ## Install
 
-```
-python3 -m pip install matrix-webhook
-# OR
-docker pull nim65s/matrix-webhook
-```
+For now, clone this repo and run `pip install .`
 
 ## Start
 
